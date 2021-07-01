@@ -2,17 +2,14 @@ let http = require("http");
 let server = http.createServer(handleServer);
 
 function handleServer(req, res) {
-    let url = require("url");
-    let parsedUrl = url.parse("http://localhost:5000");
-    let pathName = parsedUrl.pathname;
-    if(req.method === "GET" && pathName === "/") {
+    if(req.method === "GET" && req.url === "/") {
         res.write("Welcome to homepage");
         res.end();
-    } else if (req.method === "GET" && pathName === "/about") {
+    } else if (req.method === "GET" && req.url === "/about") {
         res.writeHead(201, {"Content-Type" : "text/html"});
         res.write("<h2>this is all about NodeJS</h2>");
         res.end();
-    } else if (req.method === "POST" && pathName === "/about") {
+    } else if (req.method === "POST" && req.url === "/about") {
         res.write("message: this is a post request");
         res.end();
     } else {
