@@ -2,10 +2,10 @@ let http = require("http");
 let server = http.createServer(handleServer);
 
 function handleServer(req, res) {
-    req.statusCode = 200;
+    res.statusCode = 201;
     req.method = "POST";
     console.log(req.method);
-    req.setHeader = "Content-Type", "text/html";
+    res.setHeader("Content-Type", "text/html");
     res.write(`<h1>Welcome Back!</h1>`);
     res.end();
 }
