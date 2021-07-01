@@ -10,7 +10,8 @@ function handleServer(req, res) {
         res.write("<h2>this is all about NodeJS</h2>");
         res.end();
     } else if (req.method === "POST" && req.url === "/about") {
-        res.write("message: this is a post request");
+        res.writeHead(201, {"Content-Type" : "application/json"});
+        res.write(`{message: this is a post request}`);
         res.end();
     } else {
         res.writeHead(401, {"Content-Type" : "text/html"});
